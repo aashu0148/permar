@@ -68,7 +68,7 @@ a {
   width: fit-content;
   color: $white;
   background: $primary;
-  border-radius: 30px;
+  border-radius: 5px;
   padding: 12px 18px;
   text-align: center;
   line-height: 1;
@@ -76,12 +76,23 @@ a {
   cursor: pointer;
   font-size: 16px;
   line-height: 20px;
-  font-weight: bold;
+  font-weight: 500;
   transition: 250ms;
   z-index: 20;
 
   &:active {
     transform: scale(0.96);
+  }
+
+  &:disabled {
+    background-color: $white-2;
+    border: 1px solid $gray;
+    color: $black;
+    cursor: default;
+  }
+
+  &:disabled:active {
+    transform: scale(1) !important;
   }
 
   @media (max-width: 768px) {
