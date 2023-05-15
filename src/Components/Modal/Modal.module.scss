@@ -24,7 +24,7 @@
     width: fit-content;
     min-width: 500px;
     background-color: $white;
-    border-radius: 15px;
+    border-radius: 5px;
     animation: scaleUp 500ms;
     transform-origin: center center;
 
@@ -88,7 +88,7 @@
     width: 100vw;
     height: fit-content;
     min-height: 200px;
-    max-height: 89%;
+    max-height: 80%;
     background-color: $white;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;

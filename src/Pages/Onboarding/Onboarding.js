@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+import TemplateModal from "./TemplateModal/TemplateModal";
+import ProductDetailModal from "./ProductDetailModal/ProductDetailModal";
+import ReviewModal from "./ReviewModal/ReviewModal";
+
 import robotImage from "assets/images/robot.png";
 import formGirlImage from "assets/images/formGirl.png";
 import reviewRobotImage from "assets/images/reviewRobot.png";
@@ -47,8 +51,8 @@ function Onboarding() {
       image: formGirlImage,
       buttonClickHandler: () =>
         setOpenModals({
-          template: true,
-          product: false,
+          template: false,
+          product: true,
           review: false,
         }),
       disabled: !values.template.filled,
@@ -61,9 +65,9 @@ function Onboarding() {
       image: reviewRobotImage,
       buttonClickHandler: () =>
         setOpenModals({
-          template: true,
+          template: false,
           product: false,
-          review: false,
+          review: true,
         }),
       disabled: !values.product.filled,
     },
@@ -71,6 +75,45 @@ function Onboarding() {
 
   return (
     <div className={styles.container}>
+      {openModals.template && (
+        <TemplateModal
+          onClose={() =>
+            setOpenModals((prev) => ({ ...prev, template: false }))
+          }
+          onSubmit={(temp) => {
+            console.log("Template submitted", temp);
+            setValues((prev) => ({
+              ...prev,
+              template: { filled: true, val: temp },
+            }));
+          }}
+        />
+      )}
+      {openModals.product && (
+        <ProductDetailModal
+          onClose={() => setOpenModals((prev) => ({ ...prev, product: false }))}
+          onSubmit={(obj) => {
+            console.log("Product details submitted", obj);
+            setValues((prev) => ({
+              ...prev,
+              product: { filled: true, val: obj },
+            }));
+          }}
+        />
+      )}
+      {openModals.review && (
+        <ReviewModal
+          onClose={() => setOpenModals((prev) => ({ ...prev, review: false }))}
+          onSubmit={(obj) => {
+            console.log("Review submitted", obj);
+            setValues((prev) => ({
+              ...prev,
+              review: { filled: true, val: obj },
+            }));
+          }}
+        />
+      )}
+
       <div className={styles.header}>
         <p className={styles.heading}>Onboarding</p>
         <p className={styles.description}>
