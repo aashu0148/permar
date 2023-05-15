@@ -73,7 +73,7 @@ function ReviewModal({ onClose, onSubmit }) {
             Close
           </button>
           <button className="button" onClick={handleSubmission}>
-            Submit
+            Deploy
           </button>
         </div>
       </div>

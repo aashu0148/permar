@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Onboarding from "Pages/Onboarding/Onboarding";
+import About from "Pages/About/About";
 
 import "styles/main.scss";
 import "styles/global.scss";
@@ -11,6 +12,7 @@ function App() {
     <div className="main-app">
       <BrowserRouter>
         <Routes>
+          <Route path="/about" element={<About />} />
           <Route path="/" element={<Onboarding />} />
           <Route
             path="/*"
